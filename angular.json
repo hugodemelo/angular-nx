@@ -84,7 +84,7 @@
               "apps/dashboard/src/favicon.ico",
               "apps/dashboard/src/assets"
             ],
-            "styles": ["apps/dashboard/src/styles.scss"],
+            "styles": ["./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css", "apps/dashboard/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -188,6 +188,7 @@
     }
   },
   "cli": {
+    "analytics": "7ef6a4ae-b2c8-466f-8e71-0234be40889d",
     "defaultCollection": "@nrwl/angular",
     "packageManager": "npm"
   },
