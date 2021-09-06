@@ -15,7 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@angular-nx/api-interfaces": ["libs/api-interfaces/src/index.ts"]
+      "@angular-nx/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@angular-nx/core-data": ["libs/core-data/src/index.ts"],
+      "@angular-nx/core-state": ["libs/core-state/src/index.ts"],
+      "@angular-nx/material": ["libs/material/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
