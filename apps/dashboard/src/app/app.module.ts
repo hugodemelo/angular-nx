@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
-import { CoreDataModule, coreDataRoutes } from '@angular-nx/core-data';
-import { CoreStateModule, coreStateRoutes } from '@angular-nx/core-state';
-import { MaterialModule, materialRoutes } from '@angular-nx/material';
+import { CoreDataModule } from '@angular-nx/core-data';
+import { CoreStateModule } from '@angular-nx/core-state';
+import { MaterialModule } from '@angular-nx/material';
 import { RoutingModule } from './routing.module';
 import { WidgetsComponent } from './widgets/widgets.component';
 import { WidgetsListComponent } from './widgets/widgets-list/widgets-list.component';
 import { WidgetsDetailsComponent } from './widgets/widgets-details/widgets-details.component';
 import { HomeComponent } from './home/home.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,19 +20,21 @@ import { HomeComponent } from './home/home.component';
     WidgetsComponent,
     WidgetsListComponent,
     WidgetsDetailsComponent,
-    HomeComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    NoopAnimationsModule,
+    BrowserAnimationsModule,
     StoreModule.forRoot({}, {}),
     CoreDataModule,
     CoreStateModule,
     MaterialModule,
     RoutingModule,
+    FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [ AppComponent ]
 })
-export class AppModule {}
+export class AppModule {
+}

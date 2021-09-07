@@ -1,8 +1,17 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { WidgetsComponent } from './widgets/widgets.component';
 
 @NgModule({
-  declarations: [],
-  imports: [CommonModule],
+  imports: [
+    RouterModule.forRoot([
+      { path: '', component: HomeComponent },
+      { path: 'widgets', component: WidgetsComponent },
+      { path: '**', redirectTo: '/' }
+    ])
+  ],
+  exports: [ RouterModule ]
 })
-export class RoutingModule {}
+export class RoutingModule {
+}

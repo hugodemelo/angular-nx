@@ -1,1 +1,14 @@
-<p>widgets works!</p>
+<div class='component-container'>
+  <div class='list-component'>
+    <angular-nx-widgets-list (deleted)='deleteWidget($event)'
+                             (selected)='selectWidget($event)'
+                             [widgets]='widgets'>
+    </angular-nx-widgets-list>
+  </div>
+  <div class='details-component'>
+    <angular-nx-widgets-details (cancelled)='resetForm()'
+                                (saved)='saveWidget($event)'
+                                [widget]='selectedWidget'>
+    </angular-nx-widgets-details>
+  </div>
+</div>
