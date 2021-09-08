@@ -1,6 +1,7 @@
 <div class='component-container'>
   <div class='list-component'>
-    <angular-nx-widgets-list [readonly]='true'
+    <angular-nx-widgets-list *ngIf='widgets$ | async as widgets'
+                             [readonly]='true'
                              [widgets]='widgets'>
     </angular-nx-widgets-list>
   </div>

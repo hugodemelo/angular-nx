@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Widget } from '@angular-nx/api-interfaces';
+import { Observable } from 'rxjs';
+import { WidgetsService } from '@angular-nx/core-data';
 
 @Component({
   selector: 'angular-nx-home',
@@ -7,9 +9,8 @@ import { Widget } from '@angular-nx/api-interfaces';
   styleUrls: [ './home.component.scss' ]
 })
 export class HomeComponent {
-  widgets: Widget[] = [
-    { id: '1', title: 'Widget 01', description: 'Pending' },
-    { id: '2', title: 'Widget 02', description: 'Pending' },
-    { id: '3', title: 'Widget 03', description: 'Pending' }
-  ];
+  widgets$: Observable<Widget[]> = this.widgetService.all();
+
+  constructor(private readonly widgetService: WidgetsService) {
+  }
 }
