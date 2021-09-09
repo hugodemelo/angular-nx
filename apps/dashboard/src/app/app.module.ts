@@ -13,6 +13,7 @@ import { WidgetsListComponent } from './widgets/widgets-list/widgets-list.compon
 import { WidgetsDetailsComponent } from './widgets/widgets-details/widgets-details.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
+import { UiToolbarModule } from '@angular-nx/ui-toolbar';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { FormsModule } from '@angular/forms';
     CoreStateModule,
     MaterialModule,
     RoutingModule,
-    FormsModule
+    FormsModule,
+    UiToolbarModule
   ],
   providers: [],
   bootstrap: [ AppComponent ]
