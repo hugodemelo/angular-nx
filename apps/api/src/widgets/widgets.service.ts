@@ -1,26 +1,38 @@
 import { Injectable } from '@nestjs/common';
+import { Widget } from './entities/widget.entity';
+import { v4 } from 'uuid';
 import { CreateWidgetDto } from './dto/create-widget.dto';
 import { UpdateWidgetDto } from './dto/update-widget.dto';
 
 @Injectable()
 export class WidgetsService {
-  create(createWidgetDto: CreateWidgetDto) {
-    return 'This action adds a new widget';
-  }
+
+  #widgets: Widget[] = [
+    { id: v4(), title: 'Nest mock widget 01', description: 'Mock description...' },
+    { id: v4(), title: 'Nest mock widget 02', description: 'Mock description...' },
+    { id: v4(), title: 'Nest mock widget 03', description: 'Mock description...' }
+  ];
 
   findAll() {
-    return `This action returns all widgets`;
+    return this.#widgets;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${ id } widget`;
+  findOne(id: string) {
+    return this.#widgets.find(widget => widget.id === id);
   }
 
-  update(id: number, updateWidgetDto: UpdateWidgetDto) {
-    return `This action updates a #${ id } widget`;
+  create(createWidgetDto: CreateWidgetDto) {
+    this.#widgets = [ ...this.#widgets, { ...createWidgetDto, id: v4() } ];
+    return this.#widgets;
   }
 
-  remove(id: number) {
-    return `This action removes a #${ id } widget`;
+  update(id: string, updateWidgetDto: UpdateWidgetDto) {
+    this.#widgets = this.#widgets.map(wid => wid.id === id ? updateWidgetDto : wid);
+    return this.#widgets;
+  }
+
+  remove(id: string) {
+    this.#widgets = this.#widgets.filter(widget => widget.id !== id);
+    return this.#widgets;
   }
 }

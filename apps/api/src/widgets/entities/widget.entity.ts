@@ -1,1 +1,2 @@
-export class Widget {}
+export { Widget } from '@angular-nx/api-interfaces';
+
