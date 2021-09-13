@@ -18,6 +18,7 @@
       "@angular-nx/api-interfaces": ["libs/api-interfaces/src/index.ts"],
       "@angular-nx/core-data": ["libs/core-data/src/index.ts"],
       "@angular-nx/core-state": ["libs/core-state/src/index.ts"],
+      "@angular-nx/environment": ["libs/environment/src/index.ts"],
       "@angular-nx/material": ["libs/material/src/index.ts"],
       "@angular-nx/ui-toolbar": ["libs/ui-toolbar/src/index.ts"]
     }

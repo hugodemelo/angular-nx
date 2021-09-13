@@ -53,6 +53,9 @@
       "tags": [],
       "implicitDependencies": ["dashboard"]
     },
+    "environment": {
+      "tags": []
+    },
     "material": {
       "tags": []
     },

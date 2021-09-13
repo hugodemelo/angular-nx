@@ -1,15 +1,16 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Widget } from '@angular-nx/api-interfaces';
+import { Environment, ENVIRONMENT } from '@angular-nx/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WidgetsService {
 
-  readonly #API_ENDPOINT = 'http://localhost:3000';
-
-  constructor(private readonly http: HttpClient) {
+  constructor(@Inject(ENVIRONMENT)
+              private readonly api: Environment,
+              private readonly http: HttpClient) {
   }
 
   all() {
@@ -33,7 +34,7 @@ export class WidgetsService {
   }
 
   private getUrl() {
-    return `${ this.#API_ENDPOINT }/widgets`;
+    return `${ this.api.apiEndpoint }/widgets`;
   }
 
   private getUrlWithId(id: string) {

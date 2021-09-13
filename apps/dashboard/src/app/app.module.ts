@@ -14,6 +14,8 @@ import { WidgetsDetailsComponent } from './widgets/widgets-details/widgets-detai
 import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
 import { UiToolbarModule } from '@angular-nx/ui-toolbar';
+import { ENVIRONMENT } from '@angular-nx/environment';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { UiToolbarModule } from '@angular-nx/ui-toolbar';
     FormsModule,
     UiToolbarModule
   ],
-  providers: [],
+  providers: [
+    { provide: ENVIRONMENT, useValue: environment }
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {
