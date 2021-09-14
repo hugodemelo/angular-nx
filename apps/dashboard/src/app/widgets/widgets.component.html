@@ -2,12 +2,14 @@
   <div class='list-component'>
     <angular-nx-widgets-list (deleted)='deleteWidget($event)'
                              (selected)='selectWidget($event)'
+                             *ngIf='widgets$ | async as widgets'
                              [widgets]='widgets'>
     </angular-nx-widgets-list>
   </div>
   <div class='details-component'>
     <angular-nx-widgets-details (cancelled)='resetForm()'
                                 (saved)='saveWidget($event)'
+                                *ngIf='selectedWidget$ | async as selectedWidget'
                                 [widget]='selectedWidget'>
     </angular-nx-widgets-details>
   </div>

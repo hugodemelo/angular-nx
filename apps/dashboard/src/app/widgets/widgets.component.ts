@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Widget } from '@angular-nx/api-interfaces';
-
-const mockWidgets: Widget[] = [
-  { id: '1', title: 'Widget 01', description: 'Pending' },
-  { id: '2', title: 'Widget 02', description: 'Pending' },
-  { id: '3', title: 'Widget 03', description: 'Pending' }
-];
+import { WidgetsFacade } from '@angular-nx/core-state';
+import { Observable } from 'rxjs';
 
 const emptyWidget: Widget = {
   id: null,
@@ -19,11 +15,10 @@ const emptyWidget: Widget = {
   styleUrls: [ './widgets.component.scss' ]
 })
 export class WidgetsComponent implements OnInit {
-  widgets!: Widget[];
-  selectedWidget!: Widget;
+  widgets$: Observable<Widget[]> = this.widgetsFacade.allWidgets$;
+  selectedWidget$: Observable<Widget> = this.widgetsFacade.selectedWidget$;
 
-  private static getRandomID() {
-    return Math.random().toString(36).substring(7);
+  constructor(private readonly widgetsFacade: WidgetsFacade) {
   }
 
   ngOnInit(): void {
@@ -32,19 +27,19 @@ export class WidgetsComponent implements OnInit {
 
   reset() {
     this.loadWidgets();
-    this.selectedWidget = emptyWidget;
+    this.widgetsFacade.selectWidget(emptyWidget);
   }
 
   resetForm() {
-    this.selectedWidget = emptyWidget;
+    this.widgetsFacade.selectWidget(emptyWidget);
   }
 
   selectWidget(widget: Widget) {
-    this.selectedWidget = widget;
+    this.widgetsFacade.selectWidget(widget);
   }
 
   loadWidgets() {
-    this.widgets = mockWidgets;
+    this.widgetsFacade.loadWidgets();
   }
 
   saveWidget(widget: Widget) {
@@ -56,17 +51,14 @@ export class WidgetsComponent implements OnInit {
   }
 
   createWidget(widget: Widget) {
-    this.widgets = [ ...this.widgets, { ...widget, id: WidgetsComponent.getRandomID() } ];
-    this.resetForm();
+    throw new Error('Not implemented');
   }
 
   updateWidget(widget: Widget) {
-    this.widgets = this.widgets.map(w => widget.id === w.id ? widget : w);
-    this.resetForm();
+    throw new Error('Not implemented');
   }
 
   deleteWidget(widget: Widget) {
-    this.widgets = this.widgets.filter(w => widget.id !== w.id);
-    this.resetForm();
+    throw new Error('Not implemented');
   }
 }
