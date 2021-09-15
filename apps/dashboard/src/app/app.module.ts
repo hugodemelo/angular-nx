@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { StoreModule } from '@ngrx/store';
 import { CoreDataModule } from '@angular-nx/core-data';
 import { CoreStateModule } from '@angular-nx/core-state';
 import { MaterialModule } from '@angular-nx/material';
@@ -29,7 +28,6 @@ import { environment } from '../environments/environment';
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({}, {}),
     CoreDataModule,
     CoreStateModule,
     MaterialModule,

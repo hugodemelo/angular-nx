@@ -2,7 +2,7 @@
   <div class='list-component'>
     <angular-nx-widgets-list (deleted)='deleteWidget($event)'
                              (selected)='selectWidget($event)'
-                             *ngIf='widgets$ | async as widgets'
+                             *ngIf='allWidgets$ | async as widgets'
                              [widgets]='widgets'>
     </angular-nx-widgets-list>
   </div>

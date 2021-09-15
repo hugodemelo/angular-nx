@@ -15,27 +15,27 @@ const emptyWidget: Widget = {
   styleUrls: [ './widgets.component.scss' ]
 })
 export class WidgetsComponent implements OnInit {
-  widgets$: Observable<Widget[]> = this.widgetsFacade.allWidgets$;
-  selectedWidget$: Observable<Widget> = this.widgetsFacade.selectedWidget$;
+  allWidgets$: Observable<Widget[]> = this.widgetsFacade.allWidgets$;
+  selectedWidget$: Observable<Widget | undefined> = this.widgetsFacade.selectedWidget$;
 
-  constructor(private readonly widgetsFacade: WidgetsFacade) {
-  }
+  constructor(private widgetsFacade: WidgetsFacade) {}
 
   ngOnInit(): void {
     this.reset();
+    this.widgetsFacade.mutations$.subscribe((_) => this.reset())
   }
 
   reset() {
     this.loadWidgets();
-    this.widgetsFacade.selectWidget(emptyWidget);
+    this.selectWidget(emptyWidget);
   }
 
   resetForm() {
-    this.widgetsFacade.selectWidget(emptyWidget);
+    this.selectWidget(emptyWidget);
   }
 
   selectWidget(widget: Widget) {
-    this.widgetsFacade.selectWidget(widget);
+    this.widgetsFacade.selectWidget(widget.id!);
   }
 
   loadWidgets() {
@@ -43,22 +43,10 @@ export class WidgetsComponent implements OnInit {
   }
 
   saveWidget(widget: Widget) {
-    if (widget.id) {
-      this.updateWidget(widget);
-    } else {
-      this.createWidget(widget);
-    }
-  }
-
-  createWidget(widget: Widget) {
-    throw new Error('Not implemented');
-  }
-
-  updateWidget(widget: Widget) {
-    throw new Error('Not implemented');
+    this.widgetsFacade.saveWidget(widget);
   }
 
   deleteWidget(widget: Widget) {
-    throw new Error('Not implemented');
+    this.widgetsFacade.deleteWidget(widget);
   }
 }
