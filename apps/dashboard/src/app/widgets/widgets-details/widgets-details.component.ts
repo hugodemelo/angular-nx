@@ -7,7 +7,7 @@ import { Widget } from '@angular-nx/api-interfaces';
   styleUrls: [ './widgets-details.component.scss' ]
 })
 export class WidgetsDetailsComponent {
-  currentWidget!: Widget;
+  currentWidget: Widget = {} as Widget;
   originalTitle = '';
 
   @Output() saved = new EventEmitter;
