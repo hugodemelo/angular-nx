@@ -59,6 +59,9 @@
     "material": {
       "tags": []
     },
+    "testing": {
+      "tags": []
+    },
     "ui-toolbar": {
       "tags": []
     }

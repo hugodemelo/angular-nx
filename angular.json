@@ -404,6 +404,31 @@
         }
       }
     },
+    "testing": {
+      "projectType": "library",
+      "root": "libs/testing",
+      "sourceRoot": "libs/testing/src",
+      "prefix": "angular-nx",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/testing"],
+          "options": {
+            "jestConfig": "libs/testing/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/testing/src/**/*.ts",
+              "libs/testing/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "ui-toolbar": {
       "projectType": "library",
       "root": "libs/ui-toolbar",

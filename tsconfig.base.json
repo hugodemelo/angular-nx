@@ -20,6 +20,7 @@
       "@angular-nx/core-state": ["libs/core-state/src/index.ts"],
       "@angular-nx/environment": ["libs/environment/src/index.ts"],
       "@angular-nx/material": ["libs/material/src/index.ts"],
+      "@angular-nx/testing": ["libs/testing/src/index.ts"],
       "@angular-nx/ui-toolbar": ["libs/ui-toolbar/src/index.ts"]
     }
   },

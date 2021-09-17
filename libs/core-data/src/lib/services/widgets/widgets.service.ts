@@ -6,7 +6,7 @@ import { Environment, ENVIRONMENT } from '@angular-nx/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class  WidgetsService {
+export class WidgetsService {
 
   constructor(@Inject(ENVIRONMENT)
               private readonly api: Environment,

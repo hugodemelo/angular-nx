@@ -3,6 +3,7 @@ import { WidgetsDetailsComponent } from './widgets-details.component';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from '@angular-nx/material';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { mockWidget } from '@angular-nx/testing';
 
 describe('WidgetsDetailsComponent', () => {
   let component: WidgetsDetailsComponent;
@@ -24,6 +25,7 @@ describe('WidgetsDetailsComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(WidgetsDetailsComponent);
     component = fixture.componentInstance;
+    component.widget = mockWidget;
     fixture.detectChanges();
   });
 
