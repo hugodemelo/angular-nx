@@ -10,7 +10,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { WidgetsDetailsComponent } from './widgets-details/widgets-details.component';
 import { ENVIRONMENT } from '@angular-nx/environment';
-import { mockEmptyWidget, mockWidget } from '@angular-nx/testing';
+import { mockEmptyWidget, mockWidget, mockWidgetsFacade } from '@angular-nx/testing';
 
 describe('WidgetsComponent', () => {
   let component: WidgetsComponent;
@@ -34,7 +34,8 @@ describe('WidgetsComponent', () => {
         RouterTestingModule
       ],
       providers: [
-        { provide: ENVIRONMENT, useValue: {} }
+        { provide: ENVIRONMENT, useValue: {} },
+        { provide: WidgetsFacade, useValue: mockWidgetsFacade }
       ]
     }).compileComponents();
   });
