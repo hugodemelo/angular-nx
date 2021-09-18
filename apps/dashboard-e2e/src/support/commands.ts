@@ -12,22 +12,22 @@
 declare namespace Cypress {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   interface Chainable<Subject> {
-    login(email: string, password: string): void;
+    loadWidgets(): void;
+    createWidget(widget: any): void;
   }
 }
-//
-// -- This is a parent command --
-Cypress.Commands.add('login', (email, password) => {
-  console.log('Custom command example: Login', email, password);
+
+const API_URL = `${ Cypress.env('apiUrl') }/widgets`;
+
+Cypress.Commands.add('loadWidgets', () => {
+  cy.server();
+  cy.route('GET', API_URL, 'fixture:widgets');
 });
-//
-// -- This is a child command --
-// Cypress.Commands.add("drag", { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add("dismiss", { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('createWidget', widget => {
+  cy.server();
+  cy.route('POST', API_URL, {}); // does nothing, but lets make Cypress happy
+  cy.fixture('widgets').then(widgets => {
+    cy.route('GET', API_URL, [ ...widgets, widget ]);
+  });
+});

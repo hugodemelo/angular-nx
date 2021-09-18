@@ -8,6 +8,7 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
+    "e2e:dashboard": "nx run dashboard-e2e:e2e --watch",
     "serve:json": "json-server server/db.json",
     "serve:api": "nx run api:serve",
     "serve:web": "nx serve --open",
