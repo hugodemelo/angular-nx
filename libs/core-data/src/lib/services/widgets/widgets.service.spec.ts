@@ -36,5 +36,49 @@ describe('WidgetsService', () => {
       request.flush([ mockWidget ]);
       httpTestingController.verify();
     });
+
+    it('getUrlWithId(model.id) on service.find(model.id)', done => {
+      service.find(mockWidget.id!).subscribe(widget => {
+        expect(widget).toMatchObject(mockWidget);
+        done();
+      });
+
+      const request = httpTestingController.expectOne(service[ 'getUrlWithId' ](mockWidget.id!));
+      request.flush(mockWidget);
+      httpTestingController.verify();
+    });
+
+    it('post(model.id, model) on service.create(model)', done => {
+      service.create(mockWidget).subscribe(widget => {
+        expect(widget).toMatchObject(mockWidget);
+        done();
+      });
+
+      const request = httpTestingController.expectOne(service[ 'getUrl' ]());
+      request.flush(mockWidget);
+      httpTestingController.verify();
+    });
+
+    it('put(model.id, model) on service.update(model)', done => {
+      service.update(mockWidget).subscribe(widget => {
+        expect(widget).toMatchObject(mockWidget);
+        done();
+      });
+
+      const request = httpTestingController.expectOne(service[ 'getUrlWithId' ](mockWidget.id!));
+      request.flush(mockWidget);
+      httpTestingController.verify();
+    });
+
+    it('delete(model.id) on service.delete(model)', done => {
+      service.delete(mockWidget).subscribe(widget => {
+        expect(widget).toMatchObject(mockWidget);
+        done();
+      });
+
+      const request = httpTestingController.expectOne(service[ 'getUrlWithId' ](mockWidget.id!));
+      request.flush(mockWidget);
+      httpTestingController.verify();
+    });
   });
 });
