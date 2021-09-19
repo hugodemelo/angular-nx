@@ -12,22 +12,42 @@
 declare namespace Cypress {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   interface Chainable<Subject> {
-    loadWidgets(): void;
-    createWidget(widget: any): void;
+    getEntities(): void;
+    createEntity(mock: any): void;
+    updateEntity(mock: any): void;
+    deleteEntity(mock: any): void;
+    addEntity(mock: any): void;
   }
 }
 
 const API_URL = `${ Cypress.env('apiUrl') }/widgets`;
 
-Cypress.Commands.add('loadWidgets', () => {
+Cypress.Commands.add('getEntities', () => {
   cy.server();
-  cy.route('GET', API_URL, 'fixture:widgets');
+  cy.route('GET', API_URL, `fixture:widgets`);
 });
 
-Cypress.Commands.add('createWidget', widget => {
+Cypress.Commands.add('createEntity', entity => {
   cy.server();
-  cy.route('POST', API_URL, {}); // does nothing, but lets make Cypress happy
+  cy.route('POST', API_URL, { entity });
+  cy.addEntity(entity);
+});
+
+Cypress.Commands.add('updateEntity', entity => {
+  cy.server();
+  cy.route('PUT', `${ API_URL }/${ entity.id }`, { entity });
+  cy.addEntity(entity);
+});
+
+Cypress.Commands.add('deleteEntity', entity => {
+  cy.server();
+  cy.route('DELETE', `${ API_URL }/${ entity.id }`, { entity });
+  cy.getEntities();
+});
+
+Cypress.Commands.add('addEntity', entity => {
+  cy.server();
   cy.fixture('widgets').then(widgets => {
-    cy.route('GET', API_URL, [ ...widgets, widget ]);
+    cy.route('GET', API_URL, [ ...widgets, entity ]);
   });
 });
